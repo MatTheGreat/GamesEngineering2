@@ -6,11 +6,11 @@ class Entity
 {
 public:
 	Entity();
-	void addComponent(Component c) { components.push_back(c); };
-	void removeComponent(Component c);
-	std::vector<Component> getComponents() { return components; };
+	void addComponent(Component* c) { components.push_back(c); };
+	void removeComponent(Component* c);
+	std::vector<Component*> getComponents() { return components; };
 	~Entity();
 
 private:
-	std::vector<Component> components;
+	std::vector<Component*> components;
 };

@@ -1,7 +1,3 @@
-﻿  main.cpp
-  HealthSystem.cpp
-  Entity.cpp
-  Component.cpp
-  Generating Code...
-  ESM.vcxproj -> C:\Users\gameuser\Desktop\New folder (3)\GamesEngineering2\ESM\x64\Debug\ESM.exe
-  ESM.vcxproj -> C:\Users\gameuser\Desktop\New folder (3)\GamesEngineering2\ESM\x64\Debug\ESM.pdb (Partial PDB)
+﻿  ControlSystem.cpp
+  ESM.vcxproj -> C:\Users\gameuser\Desktop\GE\GamesEngineering2\ECM\x64\Debug\ESM.exe
+  ESM.vcxproj -> C:\Users\gameuser\Desktop\GE\GamesEngineering2\ECM\x64\Debug\ESM.pdb (Partial PDB)

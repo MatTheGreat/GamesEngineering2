@@ -149,15 +149,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="ControlSystem.cpp" />
     <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="HealthSystem.cpp" />
+    <ClCompile Include="AISystem.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RenderSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h" />
+    <ClInclude Include="ControlComponent.h" />
+    <ClInclude Include="ControlSystem.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="HealthComponent.h" />
-    <ClInclude Include="HealthSystem.h" />
+    <ClInclude Include="AISystem.h" />
+    <ClInclude Include="PositionComponent.h" />
+    <ClInclude Include="RenderSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
