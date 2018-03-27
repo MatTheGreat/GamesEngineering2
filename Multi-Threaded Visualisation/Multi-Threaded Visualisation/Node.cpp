@@ -8,7 +8,7 @@ Node::Node()
 
 Node::~Node()
 {
-
+	
 }
 
 Arc* Node::GetArc(Node* pNode)

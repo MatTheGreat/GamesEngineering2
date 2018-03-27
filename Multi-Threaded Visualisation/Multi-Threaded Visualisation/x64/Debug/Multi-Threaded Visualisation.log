@@ -1,5 +1,3 @@
-﻿  Graph.cpp
-c:\users\matthew\desktop\ambush\multi-threaded visualisation\multi-threaded visualisation\graph.cpp(169): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\matthew\desktop\ambush\multi-threaded visualisation\multi-threaded visualisation\graph.cpp(170): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-c:\users\matthew\desktop\ambush\multi-threaded visualisation\multi-threaded visualisation\graph.cpp(269): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Multi-Threaded Visualisation.vcxproj -> C:\Users\Matthew\Desktop\Ambush\Multi-Threaded Visualisation\x64\Debug\Multi-Threaded Visualisation.exe
+﻿  ThreadManager.cpp
+c:\users\matthew\desktop\gitge\gamesengineering2\multi-threaded visualisation\multi-threaded visualisation\threadmanager.cpp(71): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Multi-Threaded Visualisation.vcxproj -> C:\Users\Matthew\Desktop\gitGE\GamesEngineering2\Multi-Threaded Visualisation\x64\Debug\Multi-Threaded Visualisation.exe
