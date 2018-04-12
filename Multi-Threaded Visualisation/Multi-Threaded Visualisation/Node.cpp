@@ -70,3 +70,25 @@ void Node::ResetNode()
 	m_removed = false;
 }
 
+Node::Node(const Node &obj)
+{
+	*m_previous = *obj.m_previous;
+	id = obj.id;
+	weight = obj.weight;
+	m_arcList = obj.m_arcList;
+	m_marked = obj.m_marked;
+	m_estDistToDest = obj.m_estDistToDest;
+	m_removed = obj.m_removed;
+}
+
+Node& Node::operator=(const Node& other)
+{
+	*m_previous = *other.m_previous;
+	id = other.id;
+	weight = other.weight;
+	m_arcList = other.m_arcList;
+	m_marked = other.m_marked;
+	m_estDistToDest = other.m_estDistToDest;
+	m_removed = other.m_removed;
+	return *this;
+}

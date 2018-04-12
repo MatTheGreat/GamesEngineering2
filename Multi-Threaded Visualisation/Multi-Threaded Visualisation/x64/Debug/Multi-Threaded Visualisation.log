@@ -1,3 +1,10 @@
-﻿  ThreadManager.cpp
-c:\users\matthew\desktop\gitge\gamesengineering2\multi-threaded visualisation\multi-threaded visualisation\threadmanager.cpp(71): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+﻿  CoreLoop.cpp
+c:\users\matthew\desktop\gitge\gamesengineering2\multi-threaded visualisation\multi-threaded visualisation\coreloop.cpp(65): warning C4553: '==': operator has no effect; did you intend '='?
+c:\users\matthew\desktop\gitge\gamesengineering2\multi-threaded visualisation\multi-threaded visualisation\coreloop.cpp(97): warning C4101: 'from': unreferenced local variable
+c:\users\matthew\desktop\gitge\gamesengineering2\multi-threaded visualisation\multi-threaded visualisation\coreloop.cpp(97): warning C4101: 'to': unreferenced local variable
+c:\users\matthew\desktop\gitge\gamesengineering2\multi-threaded visualisation\multi-threaded visualisation\coreloop.cpp(97): warning C4101: 'weight': unreferenced local variable
+c:\users\matthew\desktop\gitge\gamesengineering2\multi-threaded visualisation\multi-threaded visualisation\coreloop.cpp(158): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\matthew\desktop\gitge\gamesengineering2\multi-threaded visualisation\multi-threaded visualisation\coreloop.cpp(200): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\matthew\desktop\gitge\gamesengineering2\multi-threaded visualisation\multi-threaded visualisation\coreloop.cpp(211): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\matthew\desktop\gitge\gamesengineering2\multi-threaded visualisation\multi-threaded visualisation\coreloop.cpp(225): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   Multi-Threaded Visualisation.vcxproj -> C:\Users\Matthew\Desktop\gitGE\GamesEngineering2\Multi-Threaded Visualisation\x64\Debug\Multi-Threaded Visualisation.exe

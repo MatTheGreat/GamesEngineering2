@@ -156,6 +156,7 @@
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="Multi-Threaded Visualisation.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="RenderManager.cpp" />
     <ClCompile Include="RenderObject.cpp" />
     <ClCompile Include="ThreadManager.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="CoreLoop.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="RenderManager.h" />
     <ClInclude Include="RenderObject.h" />
     <ClInclude Include="ThreadManager.h" />

@@ -9,24 +9,24 @@ CoreLoop::CoreLoop()
 	}
 	isRunning = true;
 
+	m_player = Player(151);
+
+
+	imageOne = IMG_Load("Test.png");
+	textureOne = SDL_CreateTextureFromSurface(renderer, imageOne);
+
 	window = SDL_CreateWindow("Multi-Threaded Visualisation", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1920, 1080, SDL_WINDOW_SHOWN);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	renderManager = new RenderManager(renderer);
-	SDL_Surface * image = IMG_Load("Test.png");
-	SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer, image);
 	graph = Graph();
 	threadManager = new ThreadManager();
-
-	for (int i = 0; i < 100; i++)
-	{
-		for (int r = 0; r < 100; r++)
-		{
-			renderObjs.push_back(new RenderObject(texture, 0, 0, 10, 10, i * 10 + (50), r * 10 + (10), 10, 10));
-		}
-	}
+	timer = 5;
 	GenerateMap();
 
-	RunAStar();
+	imageThree = IMG_Load("Test3.png");
+	textureThree = SDL_CreateTextureFromSurface(renderer, imageThree);
+	renderObjs.at(m_player.m_nodeID)->setTexture(textureThree);
+	
 
 }
 
@@ -44,6 +44,16 @@ bool CoreLoop::Loop()
 
 void CoreLoop::Update()
 {
+	if (timer > 5)
+	{
+		timer = 0;
+		RunAmbushStar();
+	}
+	else
+	{
+		timer++;
+	}
+	Collision();
 	SDL_Event events;
 
 	while (SDL_PollEvent(&events))
@@ -61,12 +71,7 @@ void CoreLoop::Update()
 void CoreLoop::Draw()
 {
 	SDL_RenderClear(renderer);
-
-	//Should Add timer to check time taken
-	//for (int i = 0; i < renderObjs.size(); i++)
-	//{
-	//	renderManager->DrawObject(renderObjs.at(i));
-	//}
+	//Rendering is MultiThreaded
 	threadManager->Render(renderManager, renderObjs);
 	SDL_RenderPresent(renderer);
 }
@@ -75,12 +80,18 @@ void CoreLoop::GenerateMap()
 {
 	std::string temp;
 	std::ifstream myfile;
+	imageOne = IMG_Load("Test.png");
+	textureOne = SDL_CreateTextureFromSurface(renderer, imageOne);
+	int index = 0;
 	for (int r = 0; r < 16; r++)
 	{
 		for (int c = 0; c < 16; c++)
 		{
+			index++;
 			temp = "R :" + std::to_string(r) + " C: " + std::to_string(c);
 			graph.addNode(std::numeric_limits<int>::max() - 10000, temp,r,c);
+			renderObjs.push_back(new RenderObject(textureOne, 0, 0, 10, 10, c * 10 + (50), r * 10 + (10), 10, 10,index));
+
 		}
 	}
 	int from, to, weight;
@@ -131,6 +142,17 @@ void CoreLoop::GenerateMap()
 	}
 }
 
+void CoreLoop::Collision()
+{
+	for (int i = 0; i < agents.size(); i++)
+	{
+		if (m_player.m_nodeID == agents.at(i)->m_nodeID)
+		{
+			std::cout << "Collision" << std::endl;
+		}
+	}
+}
+
 void CoreLoop::OutputPath(std::vector<Node*> path, int startIndex)
 {
 	for (int i = path.size() - 1; i > -1; i--)
@@ -147,6 +169,7 @@ void CoreLoop::OutputPath(std::vector<Node*> path, int startIndex)
 //Test Thread
 static int TestThread(void *ptr)
 {
+	
 	Graph * pGraph = nullptr;
 	std::vector<Agent*>* pAgents = nullptr;
 	int * pStart = nullptr;
@@ -194,32 +217,34 @@ static int TestThread(void *ptr)
 		}
 	}
 	return 0;
+	
 }
 
-void CoreLoop::RunAStar()
+void CoreLoop::RunAmbushStar()
 {
+	for (int i = agents.size(); i < 4; i++)
+	{
+		agents.push_back(new Agent(i, start));
+	}
 
-	agents.push_back(new Agent(0));
-	agents.push_back(new Agent(1));
-	agents.push_back(new Agent(2));
-	agents.push_back(new Agent(3));
+	for (int i = 0; i < agents.size(); i++)
+	{
+		renderObjs.at(agents.at(i)->m_nodeID)->setTexture(textureOne);
+		graph.aStarAmbush(graph.nodes.at(agents.at(i)->m_nodeID), graph.nodes.at(end), agents.at(i), agents);
+  		std::cout << "Agent "<<(i+1) << std::endl;
+		OutputPath(agents.at(i)->path, agents.at(i)->m_nodeID);
+		if (agents.at(i)->path.size() > 1)
+		{
+			agents.at(i)->m_nodeID = graph.GetIndex(agents.at(i)->path.at(agents.at(i)->path.size() - 2)->id);
+		}
+	}
 
-	data  = new std::vector<std::pair<void *, int>>();
-	
-	data->push_back(std::make_pair(&graph, 0));
-	data->push_back(std::make_pair(&agents, 1));
-	data->push_back(std::make_pair(&start, 2));
-	data->push_back(std::make_pair(&end, 3));
-	void *voidPtr = data;
+	imageTwo = IMG_Load("Test2.png");
+	textureTwo = SDL_CreateTextureFromSurface(renderer, imageTwo);
 
-	thread = SDL_CreateThread(TestThread, "TestThread", voidPtr);
-
-	//graph.aStarAmbush(graph.nodes.at(start), graph.nodes.at(end), agents.at(0), agents);
-	//std::cout << "Agent 1" << std::endl;
-	//OutputPath(agents.at(0)->path,start);
-
-	//graph.aStarAmbush(graph.nodes.at(start), graph.nodes.at(end), agents.at(1), agents);
-	//std::cout << "Agent 2" << std::endl;
-	//OutputPath(agents.at(1)->path,start);
+	for (int i = 0; i < agents.size(); i++)
+	{
+		renderObjs.at(agents.at(i)->m_nodeID)->setTexture(textureTwo);
+	}
 
 }

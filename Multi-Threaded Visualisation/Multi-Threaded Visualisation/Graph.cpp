@@ -4,7 +4,7 @@
 
 Graph::Graph()
 {
-
+	nodes.reserve(1000);
 }
 
 Graph::~Graph()

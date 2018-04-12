@@ -52,6 +52,8 @@ static int RenderingThread(void *ptr)
 void ThreadManager::Render(RenderManager* renderManager, std::vector<RenderObject*> renderObjs)
 {
 
+	//Critical Section
+
 	//First Thread
 
 	dataOne = new std::vector<std::pair<void *, int>>();

@@ -42,6 +42,8 @@ public:
 		weight = newWeight;
 	}
 
+	Node(const Node &obj);
+	Node& Node::operator=(const Node& other);
 private:
 
 };

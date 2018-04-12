@@ -6,10 +6,11 @@ class Agent
 {
 public:
 	Agent();
-	Agent(int id);
+	Agent(int id,int nodeID);
 	~Agent();
 	std::vector<Node *> path;
 	int m_id;
+	int m_nodeID;
 private:
 	
 	

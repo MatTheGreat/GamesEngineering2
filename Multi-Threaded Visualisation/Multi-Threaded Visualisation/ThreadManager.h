@@ -8,7 +8,6 @@
 #include <iostream>
 
 //Class to manager threads
-//Will put thread pooling code here at later date
 class ThreadManager
 {
 public:
